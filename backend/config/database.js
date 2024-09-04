@@ -2,11 +2,9 @@ const mongoose = require('mongoose');
 
 const connectDB = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URI, {
+    await mongoose.connect('mongodb+srv://Doha:AlxCup123@tictactoe.oc9pa.mongodb.net/?retryWrites=true&w=majority&appName=tictactoe', {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-      useCreateIndex: true,
-      useFindAndModify: false
     });
     console.log('MongoDB connected');
   } catch (error) {

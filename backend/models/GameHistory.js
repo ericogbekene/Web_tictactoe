@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
  */
 const GameHistorySchema = new mongoose.Schema({
 	// auto-generated unique game id
-	game_id: {type: Schema.Types.ObjectId, auto: true},
+	game_id: {type: mongoose.Schema.Types.ObjectId, auto: true},
 	// type of the game played
 	game_type: {type: String, enum: ['Multiplayer', 'Single-player'], required: true},
 	// reference to the first player
