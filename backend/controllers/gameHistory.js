@@ -19,21 +19,19 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.post('/api/v1/game', (req, res) => {
-    const { user_id, game_id, result } = req.body;
+router.post('/game', (req, res) => {
+    const { user_id, game_id, result, created_at, updated_at } = req.body;
     const newGameHistory = new UserGameHistory({
         user_id,
         game_id,
         result,
         created_at,
-        updated_at
+        updated_at,
     });
-    newGameHistory.save((err, data) => {
-        if (err) {
-            res.status(500).json({ message: 'Internal Server Error' });
-        } else {
-            res.status(201).json({ message: 'Game History Added Successfully' });
-        }
+    newGameHistory.save().then(() => {
+        console.log('Game history saved successfully');
+    }).catch((error) => {
+        console.error('Error saving game history:', error);
     });
 
 })
